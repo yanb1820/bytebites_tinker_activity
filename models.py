@@ -27,6 +27,12 @@ class Menu:
     def filter_by_category(self, category: str) -> list:
         return [item for item in self.items if item.category.lower() == category.lower()]
 
+    def sort_by_popularity(self) -> list:
+        return sorted(self.items, key=lambda item: item.popularity_rating, reverse=True)
+
+    def sort_by_price(self) -> list:
+        return sorted(self.items, key=lambda item: item.price)
+
 
 class Order:
     def __init__(self):
