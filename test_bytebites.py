@@ -121,37 +121,3 @@ def test_purchase_history_tracks_multiple_orders():
     customer.add_order(Order())
     customer.add_order(Order())
     assert len(customer.get_purchase_history()) == 2
-
-
-# --- Runner ---
-
-def run_all():
-    tests = [
-        test_food_item_stores_attributes,
-        test_filter_returns_matching_category,
-        test_filter_is_case_insensitive,
-        test_filter_returns_empty_for_no_match,
-        test_sort_by_popularity_descending,
-        test_sort_by_price_ascending,
-        test_sort_does_not_mutate_menu,
-        test_order_total_with_multiple_items,
-        test_order_total_is_zero_when_empty,
-        test_order_total_with_single_item,
-        test_get_items_returns_all_added,
-        test_verify_user_true_for_named_customer,
-        test_verify_user_false_for_empty_name,
-        test_add_order_appears_in_history,
-        test_purchase_history_tracks_multiple_orders,
-    ]
-    passed = 0
-    for test in tests:
-        try:
-            test()
-            print(f"  PASS  {test.__name__}")
-            passed += 1
-        except AssertionError as e:
-            print(f"  FAIL  {test.__name__}: {e}")
-    print(f"\n{passed}/{len(tests)} tests passed")
-
-if __name__ == "__main__":
-    run_all()
