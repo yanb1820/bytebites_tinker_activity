@@ -27,11 +27,14 @@ class Menu:
     def filter_by_category(self, category: str) -> list:
         return [item for item in self.items if item.category.lower() == category.lower()]
 
+    def _sorted_by(self, key, reverse: bool = False) -> list:
+        return sorted(self.items, key=key, reverse=reverse)
+
     def sort_by_popularity(self) -> list:
-        return sorted(self.items, key=lambda item: item.popularity_rating, reverse=True)
+        return self._sorted_by(lambda item: item.popularity_rating, reverse=True)
 
     def sort_by_price(self) -> list:
-        return sorted(self.items, key=lambda item: item.price)
+        return self._sorted_by(lambda item: item.price)
 
 
 class Order:
